@@ -1,25 +1,33 @@
 import React, { useRef } from "react";
-import { useAppDispatch } from "../hooks"; 
+import { useAppDispatch } from "../hooks";
 
 const Field: React.FC = () => {
   const todoRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
 
   const handleAdd = () => {
-    dispatch({ type: "add", payload: `${todoRef.current?.value}` })
-    if(todoRef.current) {
+    if (todoRef.current) {
+      let value = todoRef.current?.value;
+      if (value) {
+        dispatch({ type: "add", payload: `${value}` });
+      }
       todoRef.current.value = "";
     }
-  }
+  };
   return (
-    <div className="w-full h-[50px] bg-gray-200 rounded-lg p-1 grid grid-cols-4 gap-1">
+    <div className="grid h-[50px] w-full grid-cols-4 gap-1 rounded-lg bg-gray-200 p-1">
       <input
         type="text"
         placeholder="Enter text"
-        className="col-span-3 px-1 rounded-md outline-none backdrop-grayscale-lg border border-gray-300"
+        className="backdrop-grayscale-lg col-span-3 rounded-md border border-gray-300 px-1 outline-none"
         ref={todoRef}
-		/>
-      <button className="bg-white rounded-md" onClick={handleAdd}>Add todo</button>
+      />
+      <button
+        className="rounded-md border border-gray-300 bg-white"
+        onClick={handleAdd}
+      >
+        Add todo
+      </button>
     </div>
   );
 };

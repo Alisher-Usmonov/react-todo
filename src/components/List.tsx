@@ -5,7 +5,13 @@ import ListItem from "./ListItem";
 const List: React.FC = () => {
   const state = useAppSelector((state) => state);
   return (
-    <ul className="h-[432px] w-full bg-gray-200 rounded-lg p-1 overflow-y-scroll flex flex-col gap-1">
+    <ul
+      className={`flex h-[432px] w-full flex-col  gap-1 rounded-lg bg-gray-200 p-1 ${
+        state.length > 6
+          ? "overflow-y-scroll scrollbar scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-700"
+          : ""
+      }`}
+    >
       {state.map((todo) => (
         <ListItem {...todo} />
       ))}

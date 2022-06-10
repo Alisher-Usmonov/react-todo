@@ -4,10 +4,11 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      "poiret": ['Poiret One', "cursive"]
+      "poppins": ['Poppins', "sans-serif", "system-ui"]
     }
   },
   plugins: [
-    require("prettier-plugin-tailwindcss")
+    require("tailwind-scrollbar"),
+    require("@tailwindcss/custom-forms")
   ],
 }

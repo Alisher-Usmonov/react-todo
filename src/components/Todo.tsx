@@ -4,9 +4,9 @@ import List from "./List";
 
 const Todo: React.FC = () => {
   return (
-    <div className="w-[400px] h-[500px] bg-white rounded-lg shadow-lg p-2 flex flex-col gap-2">
-     <Field />
-     <List />
+    <div className="flex h-[500px] w-[400px] flex-col gap-2 rounded-lg bg-white p-2 shadow-lg">
+      <Field />
+      <List />
     </div>
   );
 };

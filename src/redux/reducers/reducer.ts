@@ -18,7 +18,10 @@ type Action =
     }
   | {
         type: "set_completed",
-        payload: number
+        payload: {
+            id: number,
+            completed: boolean
+        }
     } 
 
 
@@ -34,7 +37,7 @@ const TodoReducer = (state = initialState, action: Action) => {
             return state.filter((todo) => todo.id !== action.payload);
         case "set_completed":
             return state.map((todo) => {
-                if(todo.id === action.payload) {
+                if(todo.id === action.payload.id) {
                     return { ...todo, completed: !todo.completed }
                 }
                 return todo
